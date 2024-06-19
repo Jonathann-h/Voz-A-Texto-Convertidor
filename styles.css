@@ -1,70 +1,105 @@
+/* Cambiar el color de fondo del cuerpo */
+body {
+  background-color: #f0f0f0; /* Color de fondo gris claro */
+  margin: 0; /* Eliminar márgenes predeterminados */
+  padding: 20px; /* Añadir algo de padding alrededor */
+  font-family: Consolas, Monaco, monospace; /* Asegurar la misma fuente para todo el cuerpo */
+}
 
 /* Estilos para el encabezado h1 */
 h1 {
-    font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-    font-size: 2rem; /* Tamaño de la fuente */
-    text-align: center; /* Alineación del texto al centro */
-    margin-bottom: 20px; /* Margen inferior */
-    color: black; /* Color del texto */
+  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
+  font-size: 2rem; /* Tamaño de la fuente */
+  text-align: center; /* Alineación del texto al centro */
+  margin-bottom: 20px; /* Margen inferior */
+  color: black; /* Color del texto */
 }
 
-p{
-    font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-    font-size: 1rem; /* Tamaño de la fuente */
-    /*text-align: ;*/
-    margin-bottom: 5px; /* Margen inferior */
-    color: black; /* Color del texto */
+p {
+  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
+  font-size: 1rem; /* Tamaño de la fuente */
+  margin-bottom: 5px; /* Margen inferior */
+  color: black; /* Color del texto */
+  text-align: center;
+}
+
+#result-text {
+  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
+  font-size: 1rem; /* Tamaño de la fuente */
+  width: 100%;
+  max-width: 600px; /* Ancho máximo del textarea */
+  padding: 10px; /* Espaciado interno */
+  margin: 0 auto 20px; /* Centrar y margen inferior */
+  display: block;
+  border-radius: 10px; /* Borde redondeado */
+  border: 1px solid #ccc; /* Contorno suave gris */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  resize: none; /* Desactivar el redimensionamiento */
 }
 
 .dots-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .dot {
-    height: 20px;
-    width: 20px;
-    margin-right: 10px;
-    border-radius: 10px;
-    background-color: #b3d4fc;
-    animation: pulse 1.5s infinite ease-in-out;
-  }
-  
-  .dot:last-child {
-    margin-right: 0;
-  }
-  
-  .dot:nth-child(1) {
-    animation-delay: -0.3s;
-  }
-  
-  .dot:nth-child(2) {
-    animation-delay: -0.1s;
-  }
-  
-  .dot:nth-child(3) {
-    animation-delay: 0.1s;
-  }
-  
-  @keyframes pulse {
-    0% {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #b3d4fc;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  margin-right: 0;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0% {
       transform: scale(0.5);
       background-color: #b3d4fc;
       box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
-    }
-  
-    50% {
+  }
+
+  50% {
       transform: scale(1.1);
       background-color: #6793fb;
       box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
-    }
-  
-    100% {
+  }
+
+  100% {
       transform: scale(0.5);
       background-color: #b3d4fc;
       box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
-    }
   }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espaciado entre los botones */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+button {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
+  font-size: 1rem; /* Tamaño de la fuente */
+  cursor: pointer; /* Cursor de mano al pasar por encima */
+}
