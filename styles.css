@@ -103,3 +103,19 @@ button {
   font-size: 1rem; /* Tamaño de la fuente */
   cursor: pointer; /* Cursor de mano al pasar por encima */
 }
+
+#copy-btn {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
+  font-size: 1rem; /* Tamaño de la fuente */
+  cursor: pointer; /* Cursor de mano al pasar por encima */
+  background-color: #4CAF50; /* Color de fondo verde */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s; /* Transición para el color de fondo */
+}
+
+#copy-btn:hover {
+  background-color: #45a049; /* Color de fondo en hover */
+}
