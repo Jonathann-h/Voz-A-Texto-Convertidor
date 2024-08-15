@@ -1,3 +1,21 @@
+@media (max-width: 600px) {
+  #result-text {
+      width: 100%;
+      font-size: 0.9rem;
+      padding: 8px;
+  }
+
+  .button-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  button {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
+
 /* Cambiar el color de fondo del cuerpo */
 body {
   background-color: #f0f0f0; /* Color de fondo gris claro */
@@ -118,4 +136,39 @@ button {
 
 #copy-btn:hover {
   background-color: #45a049; /* Color de fondo en hover */
+}
+
+#save-btn {
+  padding: 10px 20px;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007BFF; /* Color de fondo azul */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#save-btn:hover {
+  background-color: #0056b3; /* Color de fondo en hover */
+}
+
+.status-container {
+  margin-top: 20px;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 1rem;
+  color: #333;
+}
+
+#status-message {
+  font-weight: bold;
+}
+
+.active {
+  color: green;
+}
+
+.error {
+  color: red;
 }

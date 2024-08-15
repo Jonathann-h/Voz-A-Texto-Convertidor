@@ -9,12 +9,13 @@
 <body>
     <h1>Convertidor de Voz a Texto</h1>
     <div class="button-container">
-        <button id="start-btn">Iniciar</button>
-        <button id="stop-btn">Detener</button>
-        <button id="clear-btn">Limpiar</button>
-        <button id="copy-btn">Copiar</button>
-
+        <button id="start-btn" aria-label="Iniciar reconocimiento de voz">Iniciar</button>
+        <button id="stop-btn" aria-label="Detener reconocimiento de voz">Detener</button>
+        <button id="clear-btn" aria-label="Limpiar texto">Limpiar</button>
+        <button id="copy-btn" aria-label="Copiar texto al portapapeles">Copiar</button>        
+        <button id="save-btn">Guardar</button>
     </div>
+    
     <p>Resultado:</p>
     <textarea id="result-text" rows="10" cols="50"></textarea>
 
