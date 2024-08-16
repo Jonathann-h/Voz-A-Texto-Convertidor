@@ -14,4 +14,4 @@ Copiar: Copia el texto generado al portapapeles.
 
 Guardar como Txt: Guarda el texto transcrito como un archivo .txt en el sistema del usuario.
 
-Guardar como PDF: Guarda el texto transcrito como un archivo PDF utilizando la biblioteca jsPDF.
+Guardar como PDF: Guarda el texto transcrito como un archivo PDF utilizando la biblioteca "`jsPDF`".
