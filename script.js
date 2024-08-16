@@ -7,21 +7,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const resultText = document.getElementById('result-text');
     const dotsContainer = document.querySelector('.dots-container');
 
+    //Se verifica que el navegador soporta la API de reconocimiento de voz.
     if (!('webkitSpeechRecognition' in window)) {
         alert("Tu navegador no soporta la API de reconocimiento de voz. :(");
     } else {
+        //Se crea una instancia de webkitSpeechRecognition
         const recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         recognition.interimResults = false;
-        recognition.lang = 'es-ES';
+        recognition.lang = 'es-ES'; //Se establece el idioma a español.
 
+        //Funcion que se ejecuta al iniciar el reconocimiento de Voz.
         recognition.onstart = () => {
-            startButton.disabled = true;
-            stopButton.disabled = false;
-            dotsContainer.style.display = 'flex';
+            startButton.disabled = true;            //Desactivar el botón de Iniciar
+            stopButton.disabled = false;            //Activar el Botoón de detener.
+            dotsContainer.style.display = 'flex';   //Se muestra la animación
             console.log('Reconocimiento de voz iniciado');
         };
 
+        //Función que se ejecuta al recibir resultados del reconocimiento de voz.
         recognition.onresult = (event) => {
             let interimTranscript = '';
             for (let i = event.resultIndex; i < event.results.length; ++i) {
@@ -34,32 +38,38 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.log('Resultado:', interimTranscript);
         };
 
+        //En caso de error en el reconocimiento
         recognition.onerror = (event) => {
             console.error('Error en el reconocimiento de voz:', event.error);
         };
 
+        //Función que se ejecuts cuando se detiene el reconocimiento de voz
         recognition.onend = () => {
-            startButton.disabled = false;
-            stopButton.disabled = true;
-            dotsContainer.style.display = 'none';
+            startButton.disabled = false;                   //Se activa el botón de iniciar
+            stopButton.disabled = true;                     //Se desactiva el boton de detener
+            dotsContainer.style.display = 'none';           //Se oculta la animación
             console.log('Reconocimiento de voz detenido');
         };
 
+        //Evento que inicia el reconocimiento de voz
         startButton.addEventListener('click', () => {
             recognition.start();
         });
 
+        //Evento que detiene el reconocimiento de voz
         stopButton.addEventListener('click', () => {
             recognition.stop();
         });
 
+        //Evento que limpia el área de texto
         clearButton.addEventListener('click', () => {
             resultText.value = '';
         });
 
+        //Evento que copia el texto al portapapeles
         copyButton.addEventListener('click', () => {
-            resultText.select();
-            document.execCommand('copy');
+            resultText.select();            //Seleccionar texto
+            document.execCommand('copy');   //Comando copiar
             alert('Texto copiado al portapapeles!');
         });
 
@@ -72,6 +82,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             link.click();
         });
 
+        //Configuración inicial
         stopButton.disabled = true;
         dotsContainer.style.display = 'none';
     }

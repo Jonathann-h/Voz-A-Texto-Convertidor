@@ -1,3 +1,4 @@
+/*Estilo responsivo*/
 @media (max-width: 600px) {
   #result-text {
       width: 100%;
@@ -16,45 +17,48 @@
   }
 }
 
-/* Cambiar el color de fondo del cuerpo */
+/* Cuerpo de la página */
 body {
-  background-color: #f0f0f0; /* Color de fondo gris claro */
-  margin: 0; /* Eliminar márgenes predeterminados */
-  padding: 20px; /* Añadir algo de padding alrededor */
-  font-family: Consolas, Monaco, monospace; /* Asegurar la misma fuente para todo el cuerpo */
+  background-color: #f0f0f0;  /* Color de fondo (gris claro) */
+  margin: 0;                    /* Eliminar márgenes predeterminados */
+  padding: 20px;                /* Añadir (padding) alrededor */
+  font-family: Consolas, Monaco, monospace; /* Se usa la misma fuente para todo el Body */
 }
 
-/* Estilos para el encabezado h1 */
+/* Estilos para el encabezado principal (h1) */
 h1 {
   font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-  font-size: 2rem; /* Tamaño de la fuente */
-  text-align: center; /* Alineación del texto al centro */
-  margin-bottom: 20px; /* Margen inferior */
-  color: black; /* Color del texto */
+  font-size: 2rem;                          /* Tamaño de la fuente */
+  text-align: center;                       /* Alineación del texto al centro */
+  margin-bottom: 20px;                      /* Margen inferior */
+  color: black;                           /* Color del texto */
 }
 
+/*Estilos para el párrafo que indica el resultado*/
 p {
-  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-  font-size: 1rem; /* Tamaño de la fuente */
-  margin-bottom: 5px; /* Margen inferior */
-  color: black; /* Color del texto */
-  text-align: center;
+  font-family: Consolas, Monaco, monospace; /* Familia de las fuentes */
+  font-size: 1rem;                          /* Tamaño de la fuente */
+  margin-bottom: 5px;                       /* Margen inferior */
+  color: black;                           /* Color del texto */
+  text-align: center;                       /*Alineación al centro*/
 }
 
+/*Estilos para el área de texto en donde se muestra la transcripción*/
 #result-text {
-  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-  font-size: 1rem; /* Tamaño de la fuente */
+  font-family: Consolas, Monaco, monospace;   /* Familia de fuentes */
+  font-size: 1rem;                            /* Tamaño de la fuente */
   width: 100%;
-  max-width: 600px; /* Ancho máximo del textarea */
-  padding: 10px; /* Espaciado interno */
-  margin: 0 auto 20px; /* Centrar y margen inferior */
+  max-width: 600px;                           /* Ancho máximo del textarea */
+  padding: 10px;                              /* Espaciado interno */
+  margin: 0 auto 20px;                        /* Centrar y margen inferior */
   display: block;
-  border-radius: 10px; /* Borde redondeado */
-  border: 1px solid #ccc; /* Contorno suave gris */
+  border-radius: 10px;                        /* Borde redondeado */
+  border: 1px solid #ccc;                   /* Contorno suave gris */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  resize: none; /* Desactivar el redimensionamiento */
+  resize: none;                               /* Desactivar el redimensionamiento */
 }
 
+/*Estilos para el contenedor de la animación*/
 .dots-container {
   display: flex;
   align-items: center;
@@ -63,13 +67,14 @@ p {
   width: 100%;
 }
 
+/*Estilo para cada punto de la animación*/
 .dot {
   height: 20px;
   width: 20px;
   margin-right: 10px;
   border-radius: 10px;
   background-color: #b3d4fc;
-  animation: pulse 1.5s infinite ease-in-out;
+  animation: animacion 1.5s infinite ease-in-out;
 }
 
 .dot:last-child {
@@ -88,87 +93,101 @@ p {
   animation-delay: 0.1s;
 }
 
-@keyframes pulse {
+/* Definición de la animación con nombre "animacion", puntos azules que dan un efecto de carga.*/
+@keyframes animacion {
+  /* En el 0% del ciclo de la animación (inicio) */
   0% {
-      transform: scale(0.5);
-      background-color: #b3d4fc;
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+      transform: scale(0.5);        /* Cambia el tamaño del elemento a la mitad de su tamaño original */
+      background-color: #b3d4fc;  /* Color de fondo azul claro */
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7); /* Sombra con un tamaño de 0 y una transparencia del 70% */
   }
 
+  /* En el 50% del ciclo de la animación (medio) */
   50% {
-      transform: scale(1.1);
-      background-color: #6793fb;
-      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+      transform: scale(1.1); /* Cambia el tamaño del elemento un poco por encima de su tamaño original */
+      background-color: #6793fb; /* Cambia el color de fondo a un azul más oscuro */
+      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0); /* Expande la sombra a 10px y la hace completamente transparente */
   }
 
+  /* En el 100% del ciclo de la animación (final) */
   100% {
-      transform: scale(0.5);
-      background-color: #b3d4fc;
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+      transform: scale(0.5); /* Vuelve a cambiar el tamaño del elemento a la mitad de su tamaño original */
+      background-color: #b3d4fc; /* Vuelve al color de fondo azul claro original */
+      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7); /* Sombra con un tamaño de 0 y una transparencia del 70% */
   }
 }
 
+/* Estilos para el contenedor de botones */
 .button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px; /* Espaciado entre los botones */
-  margin-bottom: 20px; /* Margen inferior */
+  display: flex;            /* Se usa Flexbox para distribuir los botones en línea */
+  justify-content: center;  /* Centra los botones horizontalmente */
+  gap: 10px;                /* Espacio de 10px entre los botones */
+  margin-bottom: 20px;      /* Margen inferior de 20px */
 }
 
+/* Estilos generales para todos los botones */
 button {
-  padding: 10px 20px; /* Espaciado interno del botón */
-  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-  font-size: 1rem; /* Tamaño de la fuente */
-  cursor: pointer; /* Cursor de mano al pasar por encima */
+  padding: 10px 20px;                       /* Espaciado interno de 10px en vertical y 20px en horizontal */
+  font-family: Consolas, Monaco, monospace; /* Familia de fuentes para el texto del botón */
+  font-size: 1rem;                          /* Tamaño del texto del botón */
+  cursor: pointer;                          /* Cambia el cursor a la mano, cuando se pasa sobre el botón */
 }
 
+/* Estilos para el botón de copiar (#copy-btn) */
 #copy-btn {
-  padding: 10px 20px; /* Espaciado interno del botón */
+  padding: 10px 20px;                       /* Espaciado interno del botón */
   font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
-  font-size: 1rem; /* Tamaño de la fuente */
-  cursor: pointer; /* Cursor de mano al pasar por encima */
-  background-color: #4CAF50; /* Color de fondo verde */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s; /* Transición para el color de fondo */
+  font-size: 1rem;                          /* Tamaño del texto del botón */
+  cursor: pointer;                          /* Cambia el cursor a la mano cuando se pasa sobre el botón */
+  background-color: #4CAF50;              /* Color de fondo verde */
+  color: white;                           /* Color del texto blanco */
+  border: none;                             /* Sin borde */
+  border-radius: 5px;                       /* Bordes redondeados de 5px */
+  transition: background-color 0.3s;        /* Transición suave de 0.3s para el color de fondo */
 }
 
+/* Estilos para el botón de copiar cuando se pasa el cursor sobre él (hover) */
 #copy-btn:hover {
-  background-color: #45a049; /* Color de fondo en hover */
+  background-color: #45a049; /* Cambia el color de fondo a un verde más oscuro al hacer hover */
 }
 
+/* Estilos para el botón de guardar (#save-btn) */
 #save-btn {
-  padding: 10px 20px;
-  font-family: Consolas, Monaco, monospace;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007BFF; /* Color de fondo azul */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  padding: 10px 20px;                       /* Espaciado interno del botón */
+  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
+  font-size: 1rem;                          /* Tamaño del texto del botón */
+  cursor: pointer;                          /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+  background-color: #007BFF;              /* Color de fondo azul */
+  color: white;                           /* Color del texto blanco */
+  border: none;                             /* Sin borde */
+  border-radius: 5px;                       /* Bordes redondeados de 5px */
+  transition: background-color 0.3s;        /* Transición suave de 0.3s para el color de fondo */
 }
 
+/* Estilos para el botón de guardar cuando se pasa el cursor sobre él (hover) */
 #save-btn:hover {
-  background-color: #0056b3; /* Color de fondo en hover */
+  background-color: #0056b3; /* Cambia el color de fondo a un azul más oscuro al hacer hover */
 }
 
+/* Estilos para el contenedor de estado (.status-container) */
 .status-container {
-  margin-top: 20px;
-  font-family: Consolas, Monaco, monospace;
-  font-size: 1rem;
-  color: #333;
+  margin-top: 20px;                         /* Margen superior de 20px */
+  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
+  font-size: 1rem;                          /* Tamaño del texto */
+  color: #333;                            /* Color del texto gris oscuro */
 }
 
+/* Estilos para el mensaje de estado (#status-message) */
 #status-message {
-  font-weight: bold;
+  font-weight: bold; /* Texto en negrita */
 }
 
+/* Estilos para un estado activo (.active) */
 .active {
-  color: green;
+  color: green; /* Color del texto verde */
 }
 
+/* Estilos para un estado de error (.error) */
 .error {
-  color: red;
+  color: red; /* Color del texto rojo */
 }
