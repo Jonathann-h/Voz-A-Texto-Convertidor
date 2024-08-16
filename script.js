@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const resultText = document.getElementById('result-text');
     const dotsContainer = document.querySelector('.dots-container');
 
+            //PDF
+    const { jsPDF } = window.jspdf;
+
+        // Evento que guarda el texto en PDF
+        document.getElementById('save-pdf-btn').addEventListener('click', () => {
+            const doc = new jsPDF();
+            doc.text(resultText.value, 10, 10);
+            doc.save('transcripcion.pdf');
+        });
+
     //Se verifica que el navegador soporta la API de reconocimiento de voz.
     if (!('webkitSpeechRecognition' in window)) {
         alert("Tu navegador no soporta la API de reconocimiento de voz. :(");

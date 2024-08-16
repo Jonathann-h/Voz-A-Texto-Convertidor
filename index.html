@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convertidor de Voz a Texto</title>
     <link rel="stylesheet" href="styles.css">
+    <!--Pdf-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <h1>Convertidor de Voz a Texto</h1>
@@ -13,7 +15,8 @@
         <button id="stop-btn" aria-label="Detener reconocimiento de voz">Detener</button>
         <button id="clear-btn" aria-label="Limpiar texto">Limpiar</button>
         <button id="copy-btn" aria-label="Copiar texto al portapapeles">Copiar</button>        
-        <button id="save-btn">Guardar</button>
+        <button id="save-btn">Guardar como TXT</button>
+        <button id="save-pdf-btn">Guardar como PDF</button>
     </div>
     <!--Área en donde se muestra el resultado del reconocimiento de voz.-->
     <p>Resultado:</p>
