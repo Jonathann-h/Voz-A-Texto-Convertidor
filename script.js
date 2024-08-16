@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             //PDF
     const { jsPDF } = window.jspdf;
 
-        // Evento que guarda el texto en PDF
-        document.getElementById('save-pdf-btn').addEventListener('click', () => {
-            const doc = new jsPDF();
-            doc.text(resultText.value, 10, 10);
-            doc.save('transcripcion.pdf');
-        });
+    // Evento que descarga el texto en formato PDF
+    document.getElementById('save-pdf-btn').addEventListener('click', () => {
+        const doc = new jsPDF();
+        doc.text(resultText.value, 10, 10);
+        doc.save('transcripcion.pdf');
+    });
 
     //Se verifica que el navegador soporta la API de reconocimiento de voz.
     if (!('webkitSpeechRecognition' in window)) {
