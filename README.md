@@ -6,7 +6,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![Web Speech API](https://img.shields.io/badge/Web_Speech_API-005A9C?logo=google-chrome&logoColor=white)
 
-## ✨ Características Principales
+## 📄 Características Principales
 
 - 🎙️ Reconocimiento de voz en tiempo real con puntuación automática
 - 📝 Exportación a formatos TXT y PDF
