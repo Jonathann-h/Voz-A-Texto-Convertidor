@@ -1,193 +1,355 @@
-/*Estilo responsivo*/
-@media (max-width: 600px) {
-  #result-text {
-      width: 100%;
-      font-size: 0.9rem;
-      padding: 8px;
-  }
-
-  .button-container {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  button {
-      width: 100%;
-      margin-bottom: 10px;
-  }
+:root {
+  --primary-color: #4361ee;
+  --primary-dark: #3a56d4;
+  --secondary-color: #f8f9fa;
+  --success-color: #4cc9f0;
+  --danger-color: #f72585;
+  --warning-color: #f8961e;
+  --info-color: #4895ef;
+  --dark-color: #212529;
+  --light-color: #f8f9fa;
+  --text-color: #495057;
+  --border-color: #e9ecef;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-/* Cuerpo de la página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #f0f0f0;  /* Color de fondo (gris claro) */
-  margin: 0;                    /* Eliminar márgenes predeterminados */
-  padding: 20px;                /* Añadir (padding) alrededor */
-  font-family: Consolas, Monaco, monospace; /* Se usa la misma fuente para todo el Body */
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f7fb;
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
 }
 
-/* Estilos para el encabezado principal (h1) */
-h1 {
-  font-family: Consolas, Monaco, monospace; /* Cambia la familia de fuentes */
-  font-size: 2rem;                          /* Tamaño de la fuente */
-  text-align: center;                       /* Alineación del texto al centro */
-  margin-bottom: 20px;                      /* Margen inferior */
-  color: black;                           /* Color del texto */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: var(--shadow);
 }
 
-/*Estilos para el párrafo que indica el resultado*/
-p {
-  font-family: Consolas, Monaco, monospace; /* Familia de las fuentes */
-  font-size: 1rem;                          /* Tamaño de la fuente */
-  margin-bottom: 5px;                       /* Margen inferior */
-  color: black;                           /* Color del texto */
-  text-align: center;                       /*Alineación al centro*/
+.app-header {
+  /*background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);*/
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/*Estilos para el área de texto en donde se muestra la transcripción*/
-#result-text {
-  font-family: Consolas, Monaco, monospace;   /* Familia de fuentes */
-  font-size: 1rem;                            /* Tamaño de la fuente */
-  width: 100%;
-  max-width: 600px;                           /* Ancho máximo del textarea */
-  padding: 10px;                              /* Espaciado interno */
-  margin: 0 auto 20px;                        /* Centrar y margen inferior */
-  display: block;
-  border-radius: 10px;                        /* Borde redondeado */
-  border: 1px solid #ccc;                   /* Contorno suave gris */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  resize: none;                               /* Desactivar el redimensionamiento */
-}
-
-/*Estilos para el contenedor de la animación*/
-.dots-container {
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-/*Estilo para cada punto de la animación*/
-.dot {
-  height: 20px;
-  width: 20px;
-  margin-right: 10px;
-  border-radius: 10px;
-  background-color: #b3d4fc;
-  animation: animacion 1.5s infinite ease-in-out;
+.logo i {
+  font-size: 1.8rem;
 }
 
-.dot:last-child {
-  margin-right: 0;
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
 }
 
-.dot:nth-child(1) {
-  animation-delay: -0.3s;
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 300;
 }
 
-.dot:nth-child(2) {
-  animation-delay: -0.1s;
+.app-main {
+  flex: 1;
+  padding: 2rem;
 }
 
-.dot:nth-child(3) {
-  animation-delay: 0.1s;
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
-/* Definición de la animación con nombre "animacion", puntos azules que dan un efecto de carga.*/
-@keyframes animacion {
-  /* En el 0% del ciclo de la animación (inicio) */
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+}
+
+.btn i {
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.secondary:hover {
+  background-color: #e9ecef;
+}
+
+.success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.success:hover {
+  background-color: #3ab8dd;
+}
+
+.danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.danger:hover {
+  background-color: #e5177b;
+}
+
+.warning {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.warning:hover {
+  background-color: #e68a1a;
+}
+
+.info {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.info:hover {
+  background-color: #3d84d6;
+}
+
+.status-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 0.5rem;
+}
+
+.mic-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
   0% {
-      transform: scale(0.5);        /* Cambia el tamaño del elemento a la mitad de su tamaño original */
-      background-color: #b3d4fc;  /* Color de fondo azul claro */
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7); /* Sombra con un tamaño de 0 y una transparencia del 70% */
+      transform: scale(0.9);
+      opacity: 0.7;
   }
-
-  /* En el 50% del ciclo de la animación (medio) */
-  50% {
-      transform: scale(1.1); /* Cambia el tamaño del elemento un poco por encima de su tamaño original */
-      background-color: #6793fb; /* Cambia el color de fondo a un azul más oscuro */
-      box-shadow: 0 0 0 10px rgba(178, 212, 252, 0); /* Expande la sombra a 10px y la hace completamente transparente */
+  70% {
+      transform: scale(1.3);
+      opacity: 0;
   }
-
-  /* En el 100% del ciclo de la animación (final) */
   100% {
-      transform: scale(0.5); /* Vuelve a cambiar el tamaño del elemento a la mitad de su tamaño original */
-      background-color: #b3d4fc; /* Vuelve al color de fondo azul claro original */
-      box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7); /* Sombra con un tamaño de 0 y una transparencia del 70% */
+      transform: scale(0.9);
+      opacity: 0;
   }
 }
 
-/* Estilos para el contenedor de botones */
-.button-container {
-  display: flex;            /* Se usa Flexbox para distribuir los botones en línea */
-  justify-content: center;  /* Centra los botones horizontalmente */
-  gap: 10px;                /* Espacio de 10px entre los botones */
-  margin-bottom: 20px;      /* Margen inferior de 20px */
+.status-text {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 500;
 }
 
-/* Estilos generales para todos los botones */
-button {
-  padding: 10px 20px;                       /* Espaciado interno de 10px en vertical y 20px en horizontal */
-  font-family: Consolas, Monaco, monospace; /* Familia de fuentes para el texto del botón */
-  font-size: 1rem;                          /* Tamaño del texto del botón */
-  cursor: pointer;                          /* Cambia el cursor a la mano, cuando se pasa sobre el botón */
+.transcription-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
 }
 
-/* Estilos para el botón de copiar (#copy-btn) */
-#copy-btn {
-  padding: 10px 20px;                       /* Espaciado interno del botón */
-  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
-  font-size: 1rem;                          /* Tamaño del texto del botón */
-  cursor: pointer;                          /* Cambia el cursor a la mano cuando se pasa sobre el botón */
-  background-color: #4CAF50;              /* Color de fondo verde */
-  color: white;                           /* Color del texto blanco */
-  border: none;                             /* Sin borde */
-  border-radius: 5px;                       /* Bordes redondeados de 5px */
-  transition: background-color 0.3s;        /* Transición suave de 0.3s para el color de fondo */
+.transcription-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Estilos para el botón de copiar cuando se pasa el cursor sobre él (hover) */
-#copy-btn:hover {
-  background-color: #45a049; /* Cambia el color de fondo a un verde más oscuro al hacer hover */
+.transcription-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Estilos para el botón de guardar (#save-btn) */
-#save-btn {
-  padding: 10px 20px;                       /* Espaciado interno del botón */
-  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
-  font-size: 1rem;                          /* Tamaño del texto del botón */
-  cursor: pointer;                          /* Cambia el cursor a una mano cuando se pasa sobre el botón */
-  background-color: #007BFF;              /* Color de fondo azul */
-  color: white;                           /* Color del texto blanco */
-  border: none;                             /* Sin borde */
-  border-radius: 5px;                       /* Bordes redondeados de 5px */
-  transition: background-color 0.3s;        /* Transición suave de 0.3s para el color de fondo */
+.word-count {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  background-color: #e9ecef;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
 }
 
-/* Estilos para el botón de guardar cuando se pasa el cursor sobre él (hover) */
-#save-btn:hover {
-  background-color: #0056b3; /* Cambia el color de fondo a un azul más oscuro al hacer hover */
+#result-text {
+  width: 100%;
+  min-height: 300px;
+  padding: 1.5rem;
+  border: none;
+  resize: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  outline: none;
+  background-color: white;
 }
 
-/* Estilos para el contenedor de estado (.status-container) */
-.status-container {
-  margin-top: 20px;                         /* Margen superior de 20px */
-  font-family: Consolas, Monaco, monospace; /* Familia de fuentes */
-  font-size: 1rem;                          /* Tamaño del texto */
-  color: #333;                            /* Color del texto gris oscuro */
+#result-text:focus {
+  box-shadow: inset 0 0 0 2px var(--primary-color);
 }
 
-/* Estilos para el mensaje de estado (#status-message) */
-#status-message {
-  font-weight: bold; /* Texto en negrita */
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  border-top: 1px solid var(--border-color);
 }
 
-/* Estilos para un estado activo (.active) */
-.active {
-  color: green; /* Color del texto verde */
+/* Estado activo */
+.listening .mic-icon {
+  background-color: var(--danger-color);
+  transform: scale(1.1);
 }
 
-/* Estilos para un estado de error (.error) */
-.error {
-  color: red; /* Color del texto rojo */
+.listening .pulse-ring {
+  border-color: var(--danger-color);
+  animation: pulse 1.5s infinite;
+}
+
+.listening .status-text {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-header {
+      padding: 1rem;
+  }
+  
+  .app-main {
+      padding: 1rem;
+  }
+  
+  .controls-container {
+      flex-direction: column;
+      gap: 0.75rem;
+  }
+  
+  .button-group {
+      width: 100%;
+  }
+  
+  .btn {
+      flex: 1;
+      justify-content: center;
+  }
+  
+  #result-text {
+      min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+      font-size: 1.5rem;
+  }
+  
+  .subtitle {
+      font-size: 0.8rem;
+  }
+  
+  .btn {
+      padding: 0.6rem;
+      font-size: 0.8rem;
+  }
+  
+  .transcription-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
 }

@@ -1,99 +1,149 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Elementos del DOM
     const startButton = document.getElementById('start-btn');
     const stopButton = document.getElementById('stop-btn');
     const clearButton = document.getElementById('clear-btn');
     const copyButton = document.getElementById('copy-btn');
-    const saveButton = document.getElementById('save-btn'); // Botón de guardar
+    const saveButton = document.getElementById('save-btn');
+    const savePdfButton = document.getElementById('save-pdf-btn');
     const resultText = document.getElementById('result-text');
-    const dotsContainer = document.querySelector('.dots-container');
-
-            //PDF
+    const statusIndicator = document.getElementById('status-indicator');
+    const wordCountElement = document.getElementById('word-count');
     const { jsPDF } = window.jspdf;
 
-    // Evento que descarga el texto en formato PDF
-    document.getElementById('save-pdf-btn').addEventListener('click', () => {
-        const doc = new jsPDF();
-        doc.text(resultText.value, 10, 10);
-        doc.save('transcripcion.pdf');
-    });
+    // Actualizar contador de palabras
+    function updateWordCount() {
+        const text = resultText.value.trim();
+        const wordCount = text === '' ? 0 : text.split(/\s+/).length;
+        wordCountElement.textContent = `${wordCount} ${wordCount === 1 ? 'palabra' : 'palabras'}`;
+    }
 
-    //Se verifica que el navegador soporta la API de reconocimiento de voz.
+    // Verificar compatibilidad del navegador
     if (!('webkitSpeechRecognition' in window)) {
-        alert("Tu navegador no soporta la API de reconocimiento de voz. :(");
+        alert("Tu navegador no soporta la API de reconocimiento de voz. Por favor, usa Chrome o Edge.");
     } else {
-        //Se crea una instancia de webkitSpeechRecognition
         const recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         recognition.interimResults = false;
-        recognition.lang = 'es-ES'; //Se establece el idioma a español.
+        recognition.lang = 'es-ES';
 
-        //Funcion que se ejecuta al iniciar el reconocimiento de Voz.
+        // Evento al iniciar el reconocimiento
         recognition.onstart = () => {
-            startButton.disabled = true;            //Desactivar el botón de Iniciar
-            stopButton.disabled = false;            //Activar el Botoón de detener.
-            dotsContainer.style.display = 'flex';   //Se muestra la animación
+            startButton.disabled = true;
+            stopButton.disabled = false;
+            statusIndicator.classList.add('listening');
+            statusIndicator.querySelector('.status-text').textContent = 'Escuchando...';
             console.log('Reconocimiento de voz iniciado');
         };
 
-        //Función que se ejecuta al recibir resultados del reconocimiento de voz.
+        // Evento al recibir resultados
         recognition.onresult = (event) => {
-            let interimTranscript = '';
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
+            let transcript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
                 if (event.results[i].isFinal) {
-                    resultText.value += event.results[i][0].transcript + '\n';
-                } else {
-                    interimTranscript += event.results[i][0].transcript;
+                    transcript += event.results[i][0].transcript;
                 }
             }
-            console.log('Resultado:', interimTranscript);
+            
+            if (transcript) {
+                // Agregar con formato (nueva línea si ya hay contenido)
+                resultText.value += resultText.value ? `\n${transcript}` : transcript;
+                updateWordCount();
+                
+                // Auto-scroll al final del textarea
+                resultText.scrollTop = resultText.scrollHeight;
+            }
         };
 
-        //En caso de error en el reconocimiento
+        // Evento de error
         recognition.onerror = (event) => {
             console.error('Error en el reconocimiento de voz:', event.error);
+            statusIndicator.querySelector('.status-text').textContent = `Error: ${event.error}`;
+            setTimeout(() => {
+                if (!recognition.isListening) {
+                    statusIndicator.querySelector('.status-text').textContent = 'Inactivo';
+                }
+            }, 3000);
         };
 
-        //Función que se ejecuts cuando se detiene el reconocimiento de voz
+        // Evento al detener el reconocimiento
         recognition.onend = () => {
-            startButton.disabled = false;                   //Se activa el botón de iniciar
-            stopButton.disabled = true;                     //Se desactiva el boton de detener
-            dotsContainer.style.display = 'none';           //Se oculta la animación
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            statusIndicator.classList.remove('listening');
+            statusIndicator.querySelector('.status-text').textContent = 'Inactivo';
             console.log('Reconocimiento de voz detenido');
         };
 
-        //Evento que inicia el reconocimiento de voz
+        // Event listeners
         startButton.addEventListener('click', () => {
+            resultText.focus();
             recognition.start();
         });
 
-        //Evento que detiene el reconocimiento de voz
         stopButton.addEventListener('click', () => {
             recognition.stop();
         });
 
-        //Evento que limpia el área de texto
         clearButton.addEventListener('click', () => {
             resultText.value = '';
+            updateWordCount();
+            // Mostrar confirmación solo si hay texto
+            if (resultText.value.length > 0) {
+                if (confirm('¿Estás seguro de que quieres borrar la transcripción?')) {
+                    resultText.value = '';
+                    updateWordCount();
+                }
+            }
         });
 
-        //Evento que copia el texto al portapapeles
         copyButton.addEventListener('click', () => {
-            resultText.select();            //Seleccionar texto
-            document.execCommand('copy');   //Comando copiar
-            alert('Texto copiado al portapapeles!');
+            if (resultText.value.trim() === '') {
+                alert('No hay texto para copiar');
+                return;
+            }
+            
+            resultText.select();
+            document.execCommand('copy');
+            
+            // Feedback visual
+            const originalText = copyButton.innerHTML;
+            copyButton.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+            setTimeout(() => {
+                copyButton.innerHTML = originalText;
+            }, 2000);
         });
 
-        // Guardar el texto generadocomo un archivo .txt
         saveButton.addEventListener('click', () => {
+            if (resultText.value.trim() === '') {
+                alert('No hay texto para guardar');
+                return;
+            }
+            
             const blob = new Blob([resultText.value], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'transcripcion.txt';
-            link.click();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `transcripcion_${new Date().toISOString().slice(0, 10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         });
 
-        //Configuración inicial
-        stopButton.disabled = true;
-        dotsContainer.style.display = 'none';
+        savePdfButton.addEventListener('click', () => {
+            if (resultText.value.trim() === '') {
+                alert('No hay texto para guardar como PDF');
+                return;
+            }
+            
+            const doc = new jsPDF();
+            const lines = doc.splitTextToSize(resultText.value, 180);
+            doc.text(lines, 10, 10);
+            doc.save(`transcripcion_${new Date().toISOString().slice(0, 10)}.pdf`);
+        });
+
+        // Actualizar contador cuando el usuario escribe manualmente
+        resultText.addEventListener('input', updateWordCount);
     }
 });

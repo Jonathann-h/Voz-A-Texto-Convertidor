@@ -3,34 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertidor de Voz a Texto</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Se incluye la biblioteca jsPDF desde una CDN para permitir la generación de archivos PDF en el navegador -->
+    <title>Voz a Texto | Transcripción Instantánea</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Convertidor de Voz a Texto</h1>
-    <div class="button-container">
-        <button id="start-btn" aria-label="Iniciar reconocimiento de voz">Iniciar</button>
-        <button id="stop-btn" aria-label="Detener reconocimiento de voz">Detener</button>
-        <button id="clear-btn" aria-label="Limpiar texto">Limpiar</button>
-        <button id="copy-btn" aria-label="Copiar texto al portapapeles">Copiar</button>        
-        <button id="save-btn">Guardar como TXT</button>
-        <button id="save-pdf-btn">Guardar como PDF</button>
-    </div>
-    <!--Área en donde se muestra el resultado del reconocimiento de voz.-->
-    <p>Resultado:</p>
-    <textarea id="result-text" rows="10" cols="50"></textarea>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-microphone-alt"></i>
+                <h1>Voz a Texto</h1>
+            </div>
+            <p class="subtitle">Transcripción en tiempo real</p>
+        </header>
 
-    <!--Animación, que indica que el micrófono esta escuchando-->
-    <section class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </section>
-      
+        <main class="app-main">
+            <div class="controls-container">
+                <div class="button-group">
+                    <button id="start-btn" class="btn primary">
+                        <i class="fas fa-microphone"></i> Iniciar
+                    </button>
+                    <button id="stop-btn" class="btn danger" disabled>
+                        <i class="fas fa-stop"></i> Detener
+                    </button>
+                    <button id="clear-btn" class="btn secondary">
+                        <i class="fas fa-trash-alt"></i> Limpiar
+                    </button>
+                </div>
+                
+                <div class="button-group">
+                    <button id="copy-btn" class="btn success">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                    <button id="save-btn" class="btn info">
+                        <i class="fas fa-file-alt"></i> TXT
+                    </button>
+                    <button id="save-pdf-btn" class="btn warning">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-indicator" id="status-indicator">
+                <div class="pulse-ring"></div>
+                <div class="mic-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <span class="status-text">Inactivo</span>
+            </div>
+
+            <div class="transcription-container">
+                <div class="transcription-header">
+                    <h2><i class="fas fa-align-left"></i> Transcripción</h2>
+                    <div class="word-count" id="word-count">0 palabras</div>
+                </div>
+                <textarea id="result-text" placeholder="Tu transcripción aparecerá aquí..."></textarea>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Desarrollado por JH | Compatible con Chrome y Edge | 2025</p>
+        </footer>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
