@@ -1,17 +1,39 @@
-# Convertidor de Voz a Texto
-Convertidor de Voz a Texto desarrollado con HTML, CSS y JavaScript que permite al usuario ver en un cuadro de texto lo que es escuchado por el micrófono.
-###
-**_Funcionalidades_**
->*_La aplicación cuenta con seis botones principales:_*
+# 🎤 VozATexto - Convertidor de Voz a Texto
 
-* Iniciar: Activa el micrófono del navegador y comienza a escuchar la voz del usuario. El botón se desactiva mientras el reconocimiento de voz está activo.
+[![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-blue.svg)](LICENSE)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Web Speech API](https://img.shields.io/badge/Web_Speech_API-005A9C?logo=google-chrome&logoColor=white)
 
-* Detener: Detiene la captura de audio y convierte la voz capturada en texto, mostrándolo en el cuadro de texto. El botón se desactiva cuando el reconocimiento de voz está detenido.
+## ✨ Características Principales
 
-* Limpiar: Borra el texto generado en el cuadro de texto.
+- 🎙️ Reconocimiento de voz en tiempo real con puntuación automática
+- 📝 Exportación a formatos TXT y PDF
+- 📋 Función de copiado al portapapeles
+- 🔍 Contador de palabras
+- 🌐 Diseño responsive
 
-* Copiar: Copia el texto generado al portapapeles.
+## 🛠️ Tecnologías Utilizadas
 
-* Guardar como Txt: Guarda el texto transcrito como un archivo .txt en el sistema del usuario.
+- Web Speech API (para reconocimiento de voz)
+- jsPDF (para generación de PDFs)
+- Font Awesome (íconos)
+- Google Fonts (tipografía Inter)
+- CSS moderno (Flexbox, Grid, variables CSS)
 
-* Guardar como PDF: Guarda el texto transcrito como un archivo PDF utilizando la biblioteca `jsPDF`.
+## 🚀 Guía Rápida de Uso
+
+1. **Configuración inicial**:
+   - Permite el acceso al micrófono cuando el navegador lo solicite
+
+2. **Transcripción básica**:
+   - Haz clic en 🎤 **Iniciar** para comenzar
+   - Hablar y observar la transcripción en tiempo real
+   - Presiona ⏹️ **Detener** cuando hayas terminado
+
+3. **Gestión del texto**:
+   - 📋 Usa **Copiar** para copiar el texto al portapapeles
+   - 📥 **Exporta** a TXT/PDF para guardar las transcripciones en tu equipo
+   - 🗑️ **Limpiar** para comenzar una nueva sesión
+
